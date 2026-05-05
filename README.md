@@ -1,4 +1,4 @@
-# Trabalho-Sistema-de-Gerenciamento-de-Biblioteca (API REST):
+# Sistema-de-Gerenciamento-de-Biblioteca (API REST):
 
 Objetivo: Desenvolver o módulo de persistência e consulta de uma biblioteca utilizando Java, Spring Boot e Spring Data JPA. 
 
@@ -20,8 +20,20 @@ O que deve ser entregue:
 - Mapeamento JPA: Uso correto das anotações (@Entity, @Id, @GeneratedValue, @Column, @ManyToOne).
 - Repositórios: Interfaces CategoriaRepository e LivroRepository estendendo JpaRepository.
 
- Critério de Sucesso: O projeto deve iniciar sem erros e as tabelas tb_livro e tb_categoria devem aparecer corretamente no H2 Console (localhost:8080/h2-console).
+Critério de Sucesso: O projeto deve iniciar sem erros e as tabelas tb_livro e tb_categoria devem aparecer corretamente no H2 Console (localhost:8080/h2-console).
+
+---
 
 ### Etapa 2: Consultas e Testes (A- 11/06) 7 pontos
 Nesta fase final, vocês implementarão a lógica de busca e testarão a aplicação como se fosse um sistema real.
 
+O que deve ser entregue:
+Consultas (Query Methods): No repositório de Livros, implementar pelo menos 3 métodos de busca por nome:
+- Busca por título exato.
+- Busca por parte do título (ignorando maiúsculas/minúsculas).
+- Busca de livros por uma categoria específica.
+- Coleção do Insomnia: Exportar o arquivo de projeto do Insomnia contendo as requisições (Requests) criadas para testar cada funcionalidade da sua API (incluindo requisições iniciais para popular o seu banco de dados se necessário, ou garanta que o banco seja populado inicialmente de alguma outra forma).
+
+Critério de Sucesso: Ser possível importar o seu arquivo do Insomnia, disparar uma busca e receber a lista de livros no formato JSON com sucesso
+
+---
