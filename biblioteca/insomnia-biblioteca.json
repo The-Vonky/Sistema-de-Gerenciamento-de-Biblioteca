@@ -1,0 +1,230 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-05-05T00:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "wrk_biblioteca",
+      "_type": "workspace",
+      "name": "Sistema de Gerenciamento de Biblioteca",
+      "description": "API REST — Spring Boot + Spring Data JPA + H2\n\nInicie a aplicação antes de disparar as requisições.\nURL base: http://localhost:8080"
+    },
+    {
+      "_id": "fld_categorias",
+      "_type": "request_group",
+      "parentId": "wrk_biblioteca",
+      "name": "📚 Categorias",
+      "description": "CRUD completo de Categorias"
+    },
+    {
+      "_id": "fld_livros",
+      "_type": "request_group",
+      "parentId": "wrk_biblioteca",
+      "name": "📖 Livros",
+      "description": "CRUD completo de Livros"
+    },
+    {
+      "_id": "fld_buscas",
+      "_type": "request_group",
+      "parentId": "wrk_biblioteca",
+      "name": "🔍 Buscas (Etapa 2 — Query Methods)",
+      "description": "Endpoints de busca implementados com Spring Data JPA Query Methods"
+    },
+    {
+      "_id": "fld_h2",
+      "_type": "request_group",
+      "parentId": "wrk_biblioteca",
+      "name": "🗄️ Banco de Dados H2",
+      "description": "Referência para acesso ao console H2"
+    },
+
+    {
+      "_id": "req_cat_listar",
+      "_type": "request",
+      "parentId": "fld_categorias",
+      "name": "Listar todas as categorias",
+      "method": "GET",
+      "url": "http://localhost:8080/api/categorias",
+      "description": "Retorna todas as categorias com o total de livros em cada uma.\nQuery Method: findAll()"
+    },
+    {
+      "_id": "req_cat_por_id",
+      "_type": "request",
+      "parentId": "fld_categorias",
+      "name": "Buscar categoria por ID",
+      "method": "GET",
+      "url": "http://localhost:8080/api/categorias/1",
+      "description": "Busca uma categoria pelo seu ID.\nAlguns IDs disponíveis: 1=Ficção Científica, 2=Romance, 3=Tecnologia"
+    },
+    {
+      "_id": "req_cat_criar",
+      "_type": "request",
+      "parentId": "fld_categorias",
+      "name": "Criar categoria",
+      "method": "POST",
+      "url": "http://localhost:8080/api/categorias",
+      "description": "Cria uma nova categoria.",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Autoajuda\"\n}"
+      }
+    },
+    {
+      "_id": "req_cat_atualizar",
+      "_type": "request",
+      "parentId": "fld_categorias",
+      "name": "Atualizar categoria",
+      "method": "PUT",
+      "url": "http://localhost:8080/api/categorias/1",
+      "description": "Atualiza o nome de uma categoria existente.",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Ficção Científica e Fantasia\"\n}"
+      }
+    },
+    {
+      "_id": "req_cat_deletar",
+      "_type": "request",
+      "parentId": "fld_categorias",
+      "name": "Deletar categoria",
+      "method": "DELETE",
+      "url": "http://localhost:8080/api/categorias/7",
+      "description": "Remove uma categoria. Atenção: remove também os livros vinculados (CascadeType.ALL).\nUse ID 7 ou superior para não remover dados populados inicialmente."
+    },
+
+    {
+      "_id": "req_liv_listar",
+      "_type": "request",
+      "parentId": "fld_livros",
+      "name": "Listar todos os livros",
+      "method": "GET",
+      "url": "http://localhost:8080/api/livros",
+      "description": "Retorna todos os livros com as informações da categoria.\nQuery Method: findAll()"
+    },
+    {
+      "_id": "req_liv_por_id",
+      "_type": "request",
+      "parentId": "fld_livros",
+      "name": "Buscar livro por ID",
+      "method": "GET",
+      "url": "http://localhost:8080/api/livros/1",
+      "description": "Busca um livro pelo seu ID.\nID 1 = Duna (Ficção Científica)"
+    },
+    {
+      "_id": "req_liv_criar",
+      "_type": "request",
+      "parentId": "fld_livros",
+      "name": "Criar livro",
+      "method": "POST",
+      "url": "http://localhost:8080/api/livros",
+      "description": "Cria um novo livro vinculando-o a uma categoria existente.\ncategoriaId: 1=Ficção Científica, 2=Romance, 3=Tecnologia, 4=História, 5=Filosofia, 6=Biografia",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"titulo\": \"O Problema dos Três Corpos\",\n  \"isbn\": \"978-8580442823\",\n  \"categoriaId\": 1\n}"
+      }
+    },
+    {
+      "_id": "req_liv_atualizar",
+      "_type": "request",
+      "parentId": "fld_livros",
+      "name": "Atualizar livro",
+      "method": "PUT",
+      "url": "http://localhost:8080/api/livros/1",
+      "description": "Atualiza os dados de um livro existente.",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"titulo\": \"Duna — Edição Especial\",\n  \"isbn\": \"978-8576570400\",\n  \"categoriaId\": 1\n}"
+      }
+    },
+    {
+      "_id": "req_liv_deletar",
+      "_type": "request",
+      "parentId": "fld_livros",
+      "name": "Deletar livro",
+      "method": "DELETE",
+      "url": "http://localhost:8080/api/livros/17",
+      "description": "Remove um livro pelo ID.\nUse ID 17 ou superior para não remover dados populados inicialmente."
+    },
+
+    {
+      "_id": "req_busca_titulo_exato",
+      "_type": "request",
+      "parentId": "fld_buscas",
+      "name": "1. Busca por título EXATO",
+      "method": "GET",
+      "url": "http://localhost:8080/api/livros/buscar/titulo-exato",
+      "description": "Query Method: findByTitulo(String titulo)\n\nBusca um livro com o título exatamente igual ao informado (case-sensitive).\nExemplos: 'Duna', 'Clean Code', 'Sapiens'",
+      "parameters": [
+        { "name": "titulo", "value": "Duna" }
+      ]
+    },
+    {
+      "_id": "req_busca_titulo_parte",
+      "_type": "request",
+      "parentId": "fld_buscas",
+      "name": "2. Busca por PARTE DO TÍTULO (case-insensitive)",
+      "method": "GET",
+      "url": "http://localhost:8080/api/livros/buscar/titulo",
+      "description": "Query Method: findByTituloContainingIgnoreCase(String titulo)\n\nBusca livros cujo título contenha o trecho informado, sem diferenciar maiúsculas/minúsculas.\nExemplos: 'clean' → 'Clean Code'; 'guia' → 'O Guia do Mochileiro das Galáxias'",
+      "parameters": [
+        { "name": "titulo", "value": "clean" }
+      ]
+    },
+    {
+      "_id": "req_busca_categoria_id",
+      "_type": "request",
+      "parentId": "fld_buscas",
+      "name": "3. Busca por CATEGORIA (por ID)",
+      "method": "GET",
+      "url": "http://localhost:8080/api/livros/buscar/categoria/3",
+      "description": "Query Method: findByCategoriaId(Long categoriaId)\n\nBusca todos os livros pertencentes à categoria informada pelo ID.\nID 3 = Tecnologia (Clean Code, Design Patterns, etc.)"
+    },
+    {
+      "_id": "req_busca_categoria_nome",
+      "_type": "request",
+      "parentId": "fld_buscas",
+      "name": "BÔNUS — Busca por NOME DA CATEGORIA",
+      "method": "GET",
+      "url": "http://localhost:8080/api/livros/buscar/categoria/nome",
+      "description": "JPQL Customizada: @Query(\"SELECT l FROM Livro l WHERE LOWER(l.categoria.nome) = LOWER(:nomeCategoria)\")\n\nBusca livros filtrando pelo nome da categoria (sem precisar saber o ID).\nExemplos: 'Tecnologia', 'Romance', 'Historia'",
+      "parameters": [
+        { "name": "nome", "value": "Tecnologia" }
+      ]
+    },
+    {
+      "_id": "req_busca_isbn",
+      "_type": "request",
+      "parentId": "fld_buscas",
+      "name": "BÔNUS — Busca por ISBN",
+      "method": "GET",
+      "url": "http://localhost:8080/api/livros/buscar/isbn",
+      "description": "Query Method: findByIsbn(String isbn)\n\nBusca um livro pelo seu ISBN (identificador único).",
+      "parameters": [
+        { "name": "isbn", "value": "978-0132350884" }
+      ]
+    },
+
+    {
+      "_id": "req_h2_info",
+      "_type": "request",
+      "parentId": "fld_h2",
+      "name": "ℹ️ Como acessar o H2 Console",
+      "method": "GET",
+      "url": "http://localhost:8080/h2-console",
+      "description": "Console web do banco H2 (abrir no navegador):\n\n  URL:      http://localhost:8080/h2-console\n  JDBC URL: jdbc:h2:mem:bibliotecadb\n  Username: sa\n  Password: (deixar em branco)\n\nTabelas criadas:\n  - tb_categoria\n  - tb_livro\n\nSQL de exemplo:\n  SELECT * FROM TB_LIVRO;\n  SELECT * FROM TB_CATEGORIA;\n  SELECT l.*, c.nome as categoria FROM TB_LIVRO l JOIN TB_CATEGORIA c ON l.CATEGORIA_ID = c.ID;"
+    }
+  ]
+}
