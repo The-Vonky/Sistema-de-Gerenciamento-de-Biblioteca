@@ -4,22 +4,24 @@ import com.biblioteca.dto.DTOs.*;
 import com.biblioteca.model.Categoria;
 import com.biblioteca.repository.CategoriaRepository;
 import com.biblioteca.repository.LivroRepository;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Serviço responsável pela lógica de negócio das Categorias.
- */
 @Service
-@RequiredArgsConstructor
 public class CategoriaService {
 
     private final CategoriaRepository categoriaRepository;
     private final LivroRepository livroRepository;
+
+    @Autowired
+    public CategoriaService(CategoriaRepository categoriaRepository, LivroRepository livroRepository) {
+        this.categoriaRepository = categoriaRepository;
+        this.livroRepository = livroRepository;
+    }
 
     /** Lista todas as categorias com o total de livros em cada uma */
     @Transactional(readOnly = true)
