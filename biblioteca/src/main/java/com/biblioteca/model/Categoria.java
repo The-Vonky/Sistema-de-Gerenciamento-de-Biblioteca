@@ -2,21 +2,10 @@ package com.biblioteca.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.List;
 
-/**
- * Entidade que representa uma Categoria de livros.
- * Mapeada para a tabela tb_categoria no banco de dados.
- */
 @Entity
 @Table(name = "tb_categoria")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Categoria {
 
     @Id
@@ -27,12 +16,18 @@ public class Categoria {
     @Column(name = "nome", nullable = false, length = 100)
     private String nome;
 
-    /**
-     * Relacionamento 1:N — Uma categoria possui muitos livros.
-     * mappedBy aponta para o campo "categoria" em Livro.
-     * cascade = REMOVE: ao deletar categoria, deleta livros vinculados.
-     * fetch = LAZY: livros carregados somente quando solicitados.
-     */
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Livro> livros;
+
+    public Categoria() {}
+    public Categoria(Long id, String nome, List<Livro> livros) {
+        this.id = id; this.nome = nome; this.livros = livros;
+    }
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public List<Livro> getLivros() { return livros; }
+    public void setLivros(List<Livro> livros) { this.livros = livros; }
 }

@@ -3,30 +3,23 @@ package com.biblioteca.controller;
 import com.biblioteca.dto.DTOs.*;
 import com.biblioteca.service.LivroService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Controller REST para o recurso Livro.
- * Base URL: /api/livros
- *
- * Endpoints de busca (Etapa 2):
- *   GET /api/livros/buscar/titulo-exato?titulo=...
- *   GET /api/livros/buscar/titulo?titulo=...
- *   GET /api/livros/buscar/categoria/{categoriaId}
- *   GET /api/livros/buscar/categoria/nome?nome=...
- *   GET /api/livros/buscar/isbn?isbn=...
- */
 @RestController
 @RequestMapping("/api/livros")
-@RequiredArgsConstructor
 public class LivroController {
 
     private final LivroService livroService;
+
+    @Autowired
+    public LivroController(LivroService livroService) {
+        this.livroService = livroService;
+    }
 
     // -----------------------------------------------------------------------
     // CRUD básico

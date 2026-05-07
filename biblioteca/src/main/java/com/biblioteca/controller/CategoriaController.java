@@ -3,23 +3,23 @@ package com.biblioteca.controller;
 import com.biblioteca.dto.DTOs.*;
 import com.biblioteca.service.CategoriaService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Controller REST para o recurso Categoria.
- * Base URL: /api/categorias
- */
 @RestController
 @RequestMapping("/api/categorias")
-@RequiredArgsConstructor
 public class CategoriaController {
 
     private final CategoriaService categoriaService;
+
+    @Autowired
+    public CategoriaController(CategoriaService categoriaService) {
+        this.categoriaService = categoriaService;
+    }
 
     /**
      * GET /api/categorias

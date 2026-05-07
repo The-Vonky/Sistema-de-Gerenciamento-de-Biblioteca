@@ -5,23 +5,24 @@ import com.biblioteca.model.Categoria;
 import com.biblioteca.model.Livro;
 import com.biblioteca.repository.CategoriaRepository;
 import com.biblioteca.repository.LivroRepository;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Serviço responsável pela lógica de negócio dos Livros.
- * Implementa todas as operações CRUD e os Query Methods da Etapa 2.
- */
 @Service
-@RequiredArgsConstructor
 public class LivroService {
 
     private final LivroRepository livroRepository;
     private final CategoriaRepository categoriaRepository;
+
+    @Autowired
+    public LivroService(LivroRepository livroRepository, CategoriaRepository categoriaRepository) {
+        this.livroRepository = livroRepository;
+        this.categoriaRepository = categoriaRepository;
+    }
 
     // -----------------------------------------------------------------------
     // CRUD básico
